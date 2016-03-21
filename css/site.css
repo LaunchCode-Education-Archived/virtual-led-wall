@@ -1,0 +1,33 @@
+#wall {
+	position: relative;
+}
+
+#overlays {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 358px;
+}
+
+.block-overlay {
+	height: 95px;
+	width: 89px;
+	float: left;
+	opacity: 0.5;
+}
+
+.block-overlay.green {
+	background-color: green;
+}
+
+.block-overlay.red {
+	background-color: red;
+}
+
+.block-overlay.blue {
+	background-color: blue;
+}
+
+.block-overlay.white {
+	background-color: white;
+}
