@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virtual LED Wall</title>
+	
+	<link rel="stylesheet" href="../css/site.css">
+
+</head>
+<body>
+	
+	<div id="wall">
+		<div id="overlays"></div>
+	</div>
+	
+	<div id="buttons">
+		<button id="start" onclick="running=true;tick();">Start</button>
+		<button id="stop" onclick="running=false;">Stop</button>
+	</div>
+	
+	<script type="text/javascript" src="../js/controller.js"></script>
+	
+	<script type="text/javascript">
+	
+	var wallWidth = 5;
+	var wallHeight = 5;
+	
+	buildWall(wallWidth, wallHeight);
+	
+	var running = false;
+	
+	var locX = 1;
+	var locY = 1;
+	var lastX = 1;
+	var lastY = 1;
+	var squareColor = "red";
+	var bgColor = "orange";
+	
+	clear(bgColor);
+	
+	function tick() {
+		
+		setColor(lastX, lastY, bgColor);
+		lastX = locX;
+		lastY = locY;		
+		
+		setColor(locX, locY, squareColor);
+		
+		// 
+		if (locX < wallWidth && locY < wallHeight) {
+			if (locY === 1) {
+				locX++;
+			} else {
+				locY--;
+			}
+			
+		}
+		// we've reached the end of a row, so move up the outside
+		else {
+						
+			// if we haven't reached the last row, move up one row
+			if (locY < wallHeight) {
+				locY++;
+			} 
+			// we've reached the top row, so go left
+			else {
+				locX--;
+			}
+		}
+		
+		if (running) {
+			setTimeout(tick, 100);			
+		}
+		
+	}
+	
+	</script>
+	
+</body>
+</html>
