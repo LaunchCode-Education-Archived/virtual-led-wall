@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virtual LED Wall</title>
+	
+	<link rel="stylesheet" href="../css/site.css">
+
+</head>
+<body>
+	
+	<div id="wall">
+		<div id="overlays"></div>
+	</div>
+	
+	<div id="buttons">
+		<button id="start" onclick="running=true;tick();">Start</button>
+		<button id="stop" onclick="running=false;">Stop</button>
+	</div>
+	
+	<script type="text/javascript" src="../js/controller.js"></script>
+	
+	<script type="text/javascript">
+	
+	// set the dimensions of our wall
+	var wallWidth = 5;
+	var wallHeight = 5;
+	
+	// build the wall!
+	buildWall(wallWidth, wallHeight);
+	
+	// set our starting point as bottom, left
+	var locX = 1;
+	var locY = 1;
+	
+	// state variable to control whether the controller is on/off
+	var running = false;
+	
+	function tick() {
+		
+		// do something with setColor(x,y,color), see the other files in examples/ for ideas
+		
+		if (running) {
+			setTimeout(tick, 100);			
+		}
+		
+	}
+	
+	</script>
+	
+</body>
+</html>

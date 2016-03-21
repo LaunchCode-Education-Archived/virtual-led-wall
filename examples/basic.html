@@ -5,33 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Virtual LED Wall</title>
 	
-	<link rel="stylesheet" href="css/site.css">
+	<link rel="stylesheet" href="../css/site.css">
 
 </head>
 <body>
 	
 	<div id="wall">
-		
-		<img src="images/blocks4x4.jpg">
-		
-		<div id="overlays">
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-				<div class="block-overlay"></div>
-		</div>
+		<div id="overlays"></div>
 	</div>
 	
 	<div id="buttons">
@@ -39,9 +19,14 @@
 		<button id="stop" onclick="running=false;">Stop</button>
 	</div>
 	
-	<script type="text/javascript" src="js/controller.js"></script>
+	<script type="text/javascript" src="../js/controller.js"></script>
 	
 	<script type="text/javascript">
+	
+	var wallWidth = 5;
+	var wallHeight = 5;
+	
+	buildWall(wallWidth, wallHeight);
 	
 	var running = false;
 	
@@ -55,7 +40,7 @@
 		setColor(locX, locY, colors[colorIdx]);
 		
 		// if we haven't reached the end of a row, move right one block
-		if (locX < 4) {
+		if (locX < wallWidth) {
 			locX++;
 		} 
 		// we've reached the end of a row, so move to next row
@@ -63,7 +48,7 @@
 			locX = 1;
 			
 			// if we haven't reached the last row, move down one row
-			if (locY < 4) {
+			if (locY < wallHeight) {
 				locY++;
 			} 
 			// we've reached the last row, so go back to the first row

@@ -1,4 +1,22 @@
-var wallDimensions = {x: 4, y: 4};
+var wallDimensions = {x: 0, y: 0};
+
+function buildWall(x, y) {
+	wallDimensions.x = x;
+	wallDimensions.y = y;
+	
+	var wall = document.querySelector("#wall");
+	wall.setAttribute("style", "width:" + (x * 89) + "px;height:" + (y * 95) + "px;");
+	
+	var html = "";
+	for (var i=0; i<x*y; i++) {
+		html += '<div class="block-overlay"></div>';
+	}
+	
+	var overlayContainer = wall.querySelector("#overlays");
+	
+	overlayContainer.innerHTML = html;
+	
+}
 
 // Set the color of the block at coordinates x,y
 function setColor(x, y, color) {
@@ -8,10 +26,10 @@ function setColor(x, y, color) {
 	}
 	
 	// calculate which child of the container the block is
-	var childNum = x + (4 - y) * 4;
+	var childNum = x + (wallDimensions.y - y) * wallDimensions.x;
 	
 	// fetch the block
-	var block = document.querySelector("#overlays .block-overlay:nth-child(" + childNum + ")");
+	var block = document.querySelector("#wall .block-overlay:nth-child(" + childNum + ")");
 	
 	// set the background-color propery using inline styles
 	if (block) {
@@ -28,7 +46,7 @@ function clear() {
 		
 		// loop across a column
 		for (var j = 0; j < wallDimensions.x; j++) {
-			setColor(x + 1, y + 1, "");
+			setColor(j + 1, i + 1, "");
 		}	
 	}
 }

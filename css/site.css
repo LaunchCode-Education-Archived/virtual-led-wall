@@ -1,12 +1,14 @@
 #wall {
 	position: relative;
+	background: transparent url('../images/block.jpg') repeat;
 }
 
 #overlays {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 358px;
+	width: 100%;
+	height: 100%;
 }
 
 .block-overlay {
