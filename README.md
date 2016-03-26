@@ -10,6 +10,8 @@ The `examples/` folder contains two files: `template.html` and `basic.html`. The
 
 Now, open the file `basic.html` in a text or code editor and look at the Javascript beginning on line 24. Read through this example code, and make sure you understand what's going on. I'll post a video link to the walkthrough of this code in class, when it's available.
 
+To make your own LED wall and play with the code, copy the file `template.html`, making sure to do so in the same directory (otherwise our CSS and JS file includes will break).
+
 _Note:_ When opening code on your computer, you'll always want to open it in an appropriate editor. Notepad (Windows) and TextEdit (Mac) are fine plain text editors that are already installed on your system. You may want to install a basic coded editor, such as [Atom](https://atom.io/), in order to get nice features like syntax highlighting. You should __never__ open code in a formatted editor like Microsoft Word.
 
 ## The controller
@@ -18,11 +20,27 @@ Just like the physical LED wall at the Mentor Center has a controller -- in that
 
 ### Controller functions
 
-`setColor(x,y,colorString)`
+`setColor(x, y, colorString)`
+
+Calling this function with positive integers `x` and `y` with set the color of the square at those coordinates. The bottom left square has coordinates (1, 1), and the squares just right and above have coordiantes (1,2) and (2, 1), respectively.
+
+To set the color, pass a string as the third argument, `colorString`. This string can be any string that is a valid CSS color value. Here are some examples:
+* [Color names](http://www.w3schools.com/colors/colors_names.asp): `red`, `blue`, `white`
+* [RGB](http://www.w3schools.com/cssref/css_colors.asp): `rgb(0,0,255)` (blue), `rgb(0,255,0)` (green), `rgb(255,255,0)` (yello), `rgb(0,0,0)` (black)
+* [Hex](http://www.w3schools.com/cssref/css_colors.asp): `#0000FF` (blue), `#0000ff` (green), `#FFFF00` (yello), `#000000` (black)
+* [HSL](http://www.css3.info/preview/hsl/): `hsl(120, 100%, 50%)` (green), `hsl(0,100%, 50%)` (red)
+
+Refer to the full [CSS colors reference](http://www.w3schools.com/cssref/css_colors_legal.asp) for details on each of these methods.
 
 `clear(color)`
 
-`buildWall(x,y)`
+This method can be called either with or without an argument. Using it without -- calling `clear();` -- will clear the color from each block. Giving it a color -- for example, `clear("red");` -- will turn every block that color.
+
+`buildWall(x, y)`
+
+This function is called for you already in the `template.html` file, but you can modify the way it's used, or write your own file and call it yourself. It builds a wall that is `x` blocks wide and `y` blocks high. It must be called before using `setColor()` or `clear()`.
+
+_Note:_ If you want to play around with building your own HTML file, know that you can only build a single wall within a page.
 
 ### Exercises
 
