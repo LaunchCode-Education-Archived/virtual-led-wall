@@ -38,15 +38,18 @@ function setColor(x, y, color) {
 	
 }
 
-// Reset all blocks to be clear/transparent
-function clear() {
+// Reset all blocks to be clear/transparent, or a given color
+function clear(color) {
+	
+	// default to transparent
+	color = color || "";
 	
 	// loop across a row
 	for (var i = 0; i < wallDimensions.y; i++) {
 		
 		// loop across a column
 		for (var j = 0; j < wallDimensions.x; j++) {
-			setColor(j + 1, i + 1, "");
+			setColor(j + 1, i + 1, color);
 		}	
 	}
 }
