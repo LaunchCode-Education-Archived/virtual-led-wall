@@ -30,43 +30,77 @@
 	
 	var running = false;
 	
+	// coordinates of current square
 	var locX = 1;
 	var locY = 1;
+	
+	// keep track of the last square we were at, so we can turn it off
 	var lastX = 1;
 	var lastY = 1;
+	
+	// our colors
 	var squareColor = "red";
 	var bgColor = "orange";
 	
+	// variables to keep track of directions
+	var squareDirection = "right"; // initial direction
+	var directions = { r: "right", u: "up", l: "left", d: "down"};
+	
+	// set all blocks to be the background color
 	clear(bgColor);
 	
 	function tick() {
 		
+		var deltaX = locX - lastX;
+		
+		// turn off last square, and update the "last square" variables
 		setColor(lastX, lastY, bgColor);
 		lastX = locX;
 		lastY = locY;		
 		
+		// turn on next square
 		setColor(locX, locY, squareColor);
 		
-		// 
-		if (locX < wallWidth && locY < wallHeight) {
-			if (locY === 1) {
-				locX++;
-			} else {
+		// check to see if we're at a corner
+		if ( (locX == 1 && (locY == 1 || locY == wallHeight))
+			|| (locX == wallWidth && (locY == 1 || locY == wallHeight)) ) {
+			
+			
+			if (deltaX == 0) { // moving up or down
+				
+				if (squareDirection == directions.u) { // moving up, turn left
+					squareDirection = directions.l;
+					locX--;					
+				} else { // moving down, turn right
+					squareDirection = directions.r;
+					locX++;
+				}
+				
+			} else { // moving left or right
+				
+				if (squareDirection == directions.r) { // moving right, turn up
+					squareDirection = directions.u;
+					locY++;
+				} else { // moving left, turn down
+					squareDirection = directions.d;
+					locY--;
+				}
+				
+			}
+			
+		} else {
+			// not a a corner, so let's continue
+			
+			if (squareDirection == directions.r) { // moving right
+				locX++;				
+			} else if (squareDirection == directions.u) { // moving up
+				locY++;
+			} else if (squareDirection == directions.l) { // moving left
+				locX--;
+			} else { // moving down
 				locY--;
 			}
 			
-		}
-		// we've reached the end of a row, so move up the outside
-		else {
-						
-			// if we haven't reached the last row, move up one row
-			if (locY < wallHeight) {
-				locY++;
-			} 
-			// we've reached the top row, so go left
-			else {
-				locX--;
-			}
 		}
 		
 		if (running) {

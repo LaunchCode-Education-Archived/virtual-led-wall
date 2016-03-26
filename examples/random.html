@@ -63,9 +63,11 @@
 			// we've reached the last row, so go back to the first row and change colors
 			else {
 				locY = 1;
-				color = getRandomColor();
 			}
 		}
+		
+		// update color
+		color = getRandomColor();
 		
 		if (running) {
 			setTimeout(tick, 100);			

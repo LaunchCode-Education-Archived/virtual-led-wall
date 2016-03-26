@@ -23,6 +23,7 @@
 	
 	<script type="text/javascript">
 	
+	// 7x7 grid, with center at 4,4
 	var wallWidth = 7;
 	var wallHeight = 7;
 	
@@ -30,14 +31,72 @@
 	
 	var running = false;
 	
-	var locX = 1;
-	var locY = 1;
+	// radius coordinate; we'll work with "polar" coordinates centered at 4,4
+	var r = 0;
+	var lastR = -1;
+	var numRings = Math.round(wallWidth/2);
+	
 	var burstColor = "red";
-	var bgColor = "white";
+	var bgColor = "white"; 
+	
+	function getCoordsAtRadius(r) {
+		
+		if ((r!=0 && !r) || r < 0) return;
+		
+		if (r == 0)
+			return [{x: numRings, y: numRings}];
+			
+		
+		var coords = [];
+		
+		// top side
+		for (var i=0; i<2*r; i++)
+			coords.push({x: i-r+numRings, y: r+numRings});
+		
+		// left side
+		for (var i=0; i<2*r; i++)
+			coords.push({x: -r+numRings, y: i-r+numRings});
+		
+		// bottom side
+		for (var i=0; i<2*r; i++)
+			coords.push({x: r-i+numRings, y: -r+numRings});
+		
+		// right side
+		for (var i=0; i<2*r; i++)
+			coords.push({x: r+numRings, y: r-i+numRings});
+		
+		return coords;
+		
+	}
+	
+	// generate all sets of coordsinates once, for efficiency
+	var coords = [];
+	for (var i=0; i<numRings; i++) {
+		coords[i] = getCoordsAtRadius(i);
+	}
+	
+	clear(bgColor);
 	
 	function tick() {
 		
-		setColor(locX, locY, colors[colorIdx]);
+		// turn off last ring
+		if (lastR >= 0) {
+			var lastRCoords = coords[lastR];
+			for (var i=0; i<lastRCoords.length; i++)
+				setColor(lastRCoords[i].x, lastRCoords[i].y, bgColor);
+		}
+		
+		// turn on current ring
+		var thisRCoords = coords[r];
+		for (var i=0; i<thisRCoords.length; i++)
+			setColor(thisRCoords[i].x, thisRCoords[i].y, burstColor);
+		
+		// update ring number
+		lastR = r;
+		if (r == numRings-1)
+			r = 0;
+		else
+			r++;
 		
 		if (running) {
 			setTimeout(tick, 100);			
