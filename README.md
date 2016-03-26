@@ -65,3 +65,7 @@ These exercises have you change the light pattern, which will ratchet up the dif
 * __Vertical__ - Rather than using a left-to-right/top-to-bottom pattern, implement a bottom-to-top/left-to-right pattern. That is, the pattern moves vertically rather than horizontally. [Example](examples/gif/vertical.gif)
 * __Traveling Square__ - Pick two colors (orange and red, in the example), setting the background to one color and a single square/block on the edge of the wall to the other. When started, the single block should travel along the outside of the wall, either clockwise or counter-clockwise. [Example](examples/gif/traveling-square.gif)
 * __Starburst__ - Pick two colors as above, a background and foreground color. Create a starburst pattern whereint concentric "rings" of color move outward. You'll need to work with a wall that has equal, odd-length sides (5x5, 7x7, 9x9, etc) to get the math to work out. [Example](examples/gif/starburst.gif)
+
+#### Get adventerous!
+
+Have an idea for another pattern or color scheme that you could implement? Give it a shot!
