@@ -27,7 +27,7 @@ Calling this function with positive integers `x` and `y` with set the color of t
 To set the color, pass a string as the third argument, `colorString`. This string can be any string that is a valid CSS color value. Here are some examples:
 * [Color names](http://www.w3schools.com/colors/colors_names.asp): `red`, `blue`, `white`
 * [RGB](http://www.w3schools.com/cssref/css_colors.asp): `rgb(0,0,255)` (blue), `rgb(0,255,0)` (green), `rgb(255,255,0)` (yello), `rgb(0,0,0)` (black)
-* [Hex](http://www.w3schools.com/cssref/css_colors.asp): `#0000FF` (blue), `#0000ff` (green), `#FFFF00` (yello), `#000000` (black)
+* [Hex](http://www.w3schools.com/cssref/css_colors.asp): `#0000FF` (blue), `#0000ff` (green), `#FFFF00` (yellow), `#000000` (black)
 * [HSL](http://www.css3.info/preview/hsl/): `hsl(120,100%,50%)` (green), `hsl(0,100%,50%)` (red)
 
 Refer to the full [CSS colors reference](http://www.w3schools.com/cssref/css_colors_legal.asp) for details on each of these methods.
