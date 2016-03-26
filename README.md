@@ -28,13 +28,13 @@ To set the color, pass a string as the third argument, `colorString`. This strin
 * [Color names](http://www.w3schools.com/colors/colors_names.asp): `red`, `blue`, `white`
 * [RGB](http://www.w3schools.com/cssref/css_colors.asp): `rgb(0,0,255)` (blue), `rgb(0,255,0)` (green), `rgb(255,255,0)` (yello), `rgb(0,0,0)` (black)
 * [Hex](http://www.w3schools.com/cssref/css_colors.asp): `#0000FF` (blue), `#0000ff` (green), `#FFFF00` (yello), `#000000` (black)
-* [HSL](http://www.css3.info/preview/hsl/): `hsl(120, 100%, 50%)` (green), `hsl(0,100%, 50%)` (red)
+* [HSL](http://www.css3.info/preview/hsl/): `hsl(120,100%,50%)` (green), `hsl(0,100%,50%)` (red)
 
 Refer to the full [CSS colors reference](http://www.w3schools.com/cssref/css_colors_legal.asp) for details on each of these methods.
 
 `clear(color)`
 
-This method can be called either with or without an argument. Using it without -- calling `clear();` -- will clear the color from each block. Giving it a color -- for example, `clear("red");` -- will turn every block that color.
+This method can be called either with or without an argument. Using it without -- calling `clear();` -- will clear the color from every block, making them all transparent. Giving it a color -- for example, `clear("red");` -- will turn every block that color.
 
 `buildWall(x, y)`
 
