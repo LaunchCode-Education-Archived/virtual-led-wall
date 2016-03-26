@@ -38,7 +38,7 @@ function setColor(x, y, color) {
 	
 }
 
-// Reset all blocks to be clear/transparent
+// Reset all blocks to be clear/transparent, or a given color
 function clear(color) {
 	
 	// default to transparent
